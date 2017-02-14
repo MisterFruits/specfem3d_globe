@@ -41,7 +41,7 @@ echo `date`
 echo "starting MPI mesher on $numnodes processors"
 echo
 
-mpirun -np $numnodes $PWD/bin/xmeshfem3D
+time mpirun -np $numnodes $PWD/bin/xmeshfem3D
 
 echo "  mesher done: `date`"
 echo
@@ -61,7 +61,7 @@ echo `date`
 echo starting run in current directory $PWD
 echo
 
-mpirun -np $numnodes $PWD/bin/xspecfem3D
+time mpirun -prot -gpu -display-allocation -report-bindings -np $numnodes /pwrlocal/ibmccmpl/bin/task_prolog.sh -devices auto $PWD/bin/xspecfem3D
 
 echo "finished successfully"
 echo `date`
